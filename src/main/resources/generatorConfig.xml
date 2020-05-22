@@ -14,7 +14,7 @@
         <!--  数据库链接URL、用户名、密码  -->
 
         <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://47.101.142.142:3306/dev" userId="zzzz" password="zzzzws"></jdbcConnection>-->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://47.97.23.214:3306/ugc" userId="dm" password="bookface06"></jdbcConnection>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://xx:3306/ugc" userId="dm" password="xx"></jdbcConnection>
         <!--
               默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer;true 把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
         -->

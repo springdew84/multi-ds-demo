@@ -31,13 +31,13 @@ public class MapperConfig {
 
     @Bean("ds1Properties")
     @ConfigurationProperties(prefix = "mysql.ds1")
-    public MapperProperties ugcWriteProperties() {
+    public MapperProperties ds1MapperProperties() {
         return new MapperProperties();
     }
 
     @Bean("ds2Properties")
     @ConfigurationProperties(prefix = "mysql.ds2")
-    public MapperProperties ugcReadProperties() {
+    public MapperProperties ds2MapperProperties() {
         return new MapperProperties();
     }
 
