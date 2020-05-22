@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.ds.demo.biz.module.dao.mapper.LocalBusinessEntityMapper">
+  <resultMap id="BaseResultMap" type="com.multi.ds.demo.biz.module.pojo.entity.LocalBusinessEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="name_en" jdbcType="VARCHAR" property="nameEn" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="lon" jdbcType="DOUBLE" property="lon" />
+    <result column="lat" jdbcType="DOUBLE" property="lat" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="website" jdbcType="VARCHAR" property="website" />
+    <result column="hours" jdbcType="VARCHAR" property="hours" />
+    <result column="other" jdbcType="CHAR" property="other" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="main_store" jdbcType="VARCHAR" property="mainStore" />
+    <result column="feature_tags" jdbcType="VARCHAR" property="featureTags" />
+    <result column="state" jdbcType="CHAR" property="state" />
+    <result column="zipcode" jdbcType="CHAR" property="zipcode" />
+    <result column="city_name" jdbcType="VARCHAR" property="cityName" />
+    <result column="share_num" jdbcType="INTEGER" property="shareNum" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="county_id" jdbcType="INTEGER" property="countyId" />
+    <result column="business_type" jdbcType="CHAR" property="businessType" />
+    <result column="valid" jdbcType="BIT" property="valid" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+    <result column="comment_num" jdbcType="INTEGER" property="commentNum" />
+    <result column="comment_disabled" jdbcType="BIT" property="commentDisabled" />
+    <result column="service_tag" jdbcType="VARCHAR" property="serviceTag" />
+    <result column="address1" jdbcType="VARCHAR" property="address1" />
+    <result column="deleted" jdbcType="TINYINT" property="deleted" />
+    <result column="fav_num" jdbcType="INTEGER" property="favNum" />
+    <result column="auto_update_time" jdbcType="TIMESTAMP" property="autoUpdateTime" />
+    <result column="mini_qr" jdbcType="VARCHAR" property="miniQr" />
+    <result column="wechat_id" jdbcType="VARCHAR" property="wechatId" />
+    <result column="wechat_id_hidden" jdbcType="BIT" property="wechatIdHidden" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="review_album_id" jdbcType="INTEGER" property="reviewAlbumId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, name_en, url, lon, lat, image, phone, address, website, hours, other, city_id, 
+    category_id, main_store, feature_tags, state, zipcode, city_name, share_num, status, 
+    county_id, business_type, valid, create_time, update_time, comment_num, comment_disabled, 
+    service_tag, address1, deleted, fav_num, auto_update_time, mini_qr, wechat_id, wechat_id_hidden, 
+    email, review_album_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from local_business
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from local_business
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.multi.ds.demo.biz.module.pojo.entity.LocalBusinessEntity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into local_business (name, name_en, url, 
+      lon, lat, image, phone, 
+      address, website, hours, 
+      other, city_id, category_id, 
+      main_store, feature_tags, state, 
+      zipcode, city_name, share_num, 
+      status, county_id, business_type, 
+      valid, create_time, update_time, 
+      comment_num, comment_disabled, service_tag, 
+      address1, deleted, fav_num, 
+      auto_update_time, mini_qr, wechat_id, 
+      wechat_id_hidden, email, review_album_id
+      )
+    values (#{name,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{lon,jdbcType=DOUBLE}, #{lat,jdbcType=DOUBLE}, #{image,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{website,jdbcType=VARCHAR}, #{hours,jdbcType=VARCHAR}, 
+      #{other,jdbcType=CHAR}, #{cityId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, 
+      #{mainStore,jdbcType=VARCHAR}, #{featureTags,jdbcType=VARCHAR}, #{state,jdbcType=CHAR}, 
+      #{zipcode,jdbcType=CHAR}, #{cityName,jdbcType=VARCHAR}, #{shareNum,jdbcType=INTEGER}, 
+      #{status,jdbcType=BIT}, #{countyId,jdbcType=INTEGER}, #{businessType,jdbcType=CHAR}, 
+      #{valid,jdbcType=BIT}, #{createTime,jdbcType=BIGINT}, #{updateTime,jdbcType=BIGINT}, 
+      #{commentNum,jdbcType=INTEGER}, #{commentDisabled,jdbcType=BIT}, #{serviceTag,jdbcType=VARCHAR}, 
+      #{address1,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT}, #{favNum,jdbcType=INTEGER}, 
+      #{autoUpdateTime,jdbcType=TIMESTAMP}, #{miniQr,jdbcType=VARCHAR}, #{wechatId,jdbcType=VARCHAR}, 
+      #{wechatIdHidden,jdbcType=BIT}, #{email,jdbcType=VARCHAR}, #{reviewAlbumId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.multi.ds.demo.biz.module.pojo.entity.LocalBusinessEntity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into local_business
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        name,
+      </if>
+      <if test="nameEn != null">
+        name_en,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="lon != null">
+        lon,
+      </if>
+      <if test="lat != null">
+        lat,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="website != null">
+        website,
+      </if>
+      <if test="hours != null">
+        hours,
+      </if>
+      <if test="other != null">
+        other,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="mainStore != null">
+        main_store,
+      </if>
+      <if test="featureTags != null">
+        feature_tags,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="zipcode != null">
+        zipcode,
+      </if>
+      <if test="cityName != null">
+        city_name,
+      </if>
+      <if test="shareNum != null">
+        share_num,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="countyId != null">
+        county_id,
+      </if>
+      <if test="businessType != null">
+        business_type,
+      </if>
+      <if test="valid != null">
+        valid,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="commentNum != null">
+        comment_num,
+      </if>
+      <if test="commentDisabled != null">
+        comment_disabled,
+      </if>
+      <if test="serviceTag != null">
+        service_tag,
+      </if>
+      <if test="address1 != null">
+        address1,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="favNum != null">
+        fav_num,
+      </if>
+      <if test="autoUpdateTime != null">
+        auto_update_time,
+      </if>
+      <if test="miniQr != null">
+        mini_qr,
+      </if>
+      <if test="wechatId != null">
+        wechat_id,
+      </if>
+      <if test="wechatIdHidden != null">
+        wechat_id_hidden,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="reviewAlbumId != null">
+        review_album_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null">
+        #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="lon != null">
+        #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="hours != null">
+        #{hours,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        #{other,jdbcType=CHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="mainStore != null">
+        #{mainStore,jdbcType=VARCHAR},
+      </if>
+      <if test="featureTags != null">
+        #{featureTags,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="zipcode != null">
+        #{zipcode,jdbcType=CHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="shareNum != null">
+        #{shareNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="countyId != null">
+        #{countyId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="commentNum != null">
+        #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentDisabled != null">
+        #{commentDisabled,jdbcType=BIT},
+      </if>
+      <if test="serviceTag != null">
+        #{serviceTag,jdbcType=VARCHAR},
+      </if>
+      <if test="address1 != null">
+        #{address1,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=TINYINT},
+      </if>
+      <if test="favNum != null">
+        #{favNum,jdbcType=INTEGER},
+      </if>
+      <if test="autoUpdateTime != null">
+        #{autoUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="miniQr != null">
+        #{miniQr,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null">
+        #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatIdHidden != null">
+        #{wechatIdHidden,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewAlbumId != null">
+        #{reviewAlbumId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.multi.ds.demo.biz.module.pojo.entity.LocalBusinessEntity">
+    update local_business
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nameEn != null">
+        name_en = #{nameEn,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="lon != null">
+        lon = #{lon,jdbcType=DOUBLE},
+      </if>
+      <if test="lat != null">
+        lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="website != null">
+        website = #{website,jdbcType=VARCHAR},
+      </if>
+      <if test="hours != null">
+        hours = #{hours,jdbcType=VARCHAR},
+      </if>
+      <if test="other != null">
+        other = #{other,jdbcType=CHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="mainStore != null">
+        main_store = #{mainStore,jdbcType=VARCHAR},
+      </if>
+      <if test="featureTags != null">
+        feature_tags = #{featureTags,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=CHAR},
+      </if>
+      <if test="zipcode != null">
+        zipcode = #{zipcode,jdbcType=CHAR},
+      </if>
+      <if test="cityName != null">
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="shareNum != null">
+        share_num = #{shareNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="countyId != null">
+        county_id = #{countyId,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        business_type = #{businessType,jdbcType=CHAR},
+      </if>
+      <if test="valid != null">
+        valid = #{valid,jdbcType=BIT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+      <if test="commentNum != null">
+        comment_num = #{commentNum,jdbcType=INTEGER},
+      </if>
+      <if test="commentDisabled != null">
+        comment_disabled = #{commentDisabled,jdbcType=BIT},
+      </if>
+      <if test="serviceTag != null">
+        service_tag = #{serviceTag,jdbcType=VARCHAR},
+      </if>
+      <if test="address1 != null">
+        address1 = #{address1,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=TINYINT},
+      </if>
+      <if test="favNum != null">
+        fav_num = #{favNum,jdbcType=INTEGER},
+      </if>
+      <if test="autoUpdateTime != null">
+        auto_update_time = #{autoUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="miniQr != null">
+        mini_qr = #{miniQr,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null">
+        wechat_id = #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatIdHidden != null">
+        wechat_id_hidden = #{wechatIdHidden,jdbcType=BIT},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewAlbumId != null">
+        review_album_id = #{reviewAlbumId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.multi.ds.demo.biz.module.pojo.entity.LocalBusinessEntity">
+    update local_business
+    set name = #{name,jdbcType=VARCHAR},
+      name_en = #{nameEn,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      lon = #{lon,jdbcType=DOUBLE},
+      lat = #{lat,jdbcType=DOUBLE},
+      image = #{image,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      website = #{website,jdbcType=VARCHAR},
+      hours = #{hours,jdbcType=VARCHAR},
+      other = #{other,jdbcType=CHAR},
+      city_id = #{cityId,jdbcType=INTEGER},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      main_store = #{mainStore,jdbcType=VARCHAR},
+      feature_tags = #{featureTags,jdbcType=VARCHAR},
+      state = #{state,jdbcType=CHAR},
+      zipcode = #{zipcode,jdbcType=CHAR},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      share_num = #{shareNum,jdbcType=INTEGER},
+      status = #{status,jdbcType=BIT},
+      county_id = #{countyId,jdbcType=INTEGER},
+      business_type = #{businessType,jdbcType=CHAR},
+      valid = #{valid,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT},
+      comment_num = #{commentNum,jdbcType=INTEGER},
+      comment_disabled = #{commentDisabled,jdbcType=BIT},
+      service_tag = #{serviceTag,jdbcType=VARCHAR},
+      address1 = #{address1,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=TINYINT},
+      fav_num = #{favNum,jdbcType=INTEGER},
+      auto_update_time = #{autoUpdateTime,jdbcType=TIMESTAMP},
+      mini_qr = #{miniQr,jdbcType=VARCHAR},
+      wechat_id = #{wechatId,jdbcType=VARCHAR},
+      wechat_id_hidden = #{wechatIdHidden,jdbcType=BIT},
+      email = #{email,jdbcType=VARCHAR},
+      review_album_id = #{reviewAlbumId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
